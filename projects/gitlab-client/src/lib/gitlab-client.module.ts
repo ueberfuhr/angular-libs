@@ -1,16 +1,23 @@
-import { NgModule } from '@angular/core';
-import { GitlabClientComponent } from './gitlab-client.component';
-
-
+import {ModuleWithProviders, NgModule} from '@angular/core';
+import {GitlabConfig, GitlabConfigProvider} from './config/gitlab-config.model';
+import {GitlabService} from './services/gitlab.service';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    GitlabClientComponent
-  ],
   imports: [
-  ],
-  exports: [
-    GitlabClientComponent
+    HttpClientModule
   ]
 })
-export class GitlabClientModule { }
+export class GitlabClientModule {
+
+  static forRoot(gitlabConfigFactory: () => GitlabConfig): ModuleWithProviders<GitlabClientModule> {
+    return {
+      ngModule: GitlabClientModule,
+      providers: [
+        {provide: GitlabConfigProvider, useValue: new GitlabConfigProvider(gitlabConfigFactory)},
+        GitlabService
+      ]
+    }
+  }
+
+}
