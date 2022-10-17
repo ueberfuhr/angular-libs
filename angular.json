@@ -3,5 +3,36 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "gitlab-client": {
+      "projectType": "library",
+      "root": "projects/gitlab-client",
+      "sourceRoot": "projects/gitlab-client/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/gitlab-client/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/gitlab-client/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/gitlab-client/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/gitlab-client/src/test.ts",
+            "tsConfig": "projects/gitlab-client/tsconfig.spec.json",
+            "karmaConfig": "projects/gitlab-client/karma.conf.js"
+          }
+        }
+      }
+    }
   }
 }
