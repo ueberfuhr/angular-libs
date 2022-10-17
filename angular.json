@@ -27,8 +27,8 @@
         "test": {
           "builder": "@angular-builders/jest:run",
           "options": {
-            "configPath": "projects/gitlab-client/jest.config.js",
-            "tsConfig": "projects/gitlab-client/tsconfig.spec.json"
+            "configPath": "jest.config.js",
+            "tsConfig": "tsconfig.spec.json"
           }
         }
       }

@@ -1,8 +1,8 @@
 module.exports = {
 
   collectCoverageFrom: [
-    '<rootDir>/src/**/*.ts',
-    '!<rootDir>/src/public-api.ts'
+    '<rootDir>/projects/gitlab-client/src/**/*.ts',
+    '!<rootDir>/projects/gitlab-client/src/public-api.ts'
   ],
 
   coverageDirectory: 'coverage',
@@ -16,11 +16,10 @@ module.exports = {
     '<rootDir>/coverage/',
     '<rootDir>/dist/',
     '<rootDir>/e2e/',
-    '<rootDir>/node_modules/',
-    '<rootDir>/**/*.(js|scss)'
+    '<rootDir>/node_modules/'
   ],
 
   testMatch: [
-    '<rootDir>/src/**/*.spec.ts'
+    '<rootDir>/projects/gitlab-client/src/**/*.spec.ts'
   ]
 };
