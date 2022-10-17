@@ -25,11 +25,10 @@
           "defaultConfiguration": "production"
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@angular-builders/jest:run",
           "options": {
-            "main": "projects/gitlab-client/src/test.ts",
-            "tsConfig": "projects/gitlab-client/tsconfig.spec.json",
-            "karmaConfig": "projects/gitlab-client/karma.conf.js"
+            "configPath": "projects/gitlab-client/jest.config.js",
+            "tsConfig": "projects/gitlab-client/tsconfig.spec.json"
           }
         }
       }
