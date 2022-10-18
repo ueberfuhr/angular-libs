@@ -2,7 +2,7 @@ import {createHttpFactory, HttpMethod, SpectatorHttp} from '@ngneat/spectator/je
 import {DataSet, GitlabService} from './gitlab.service';
 import {HttpTestingController} from '@angular/common/http/testing';
 import {map, merge, take, toArray} from 'rxjs';
-import {GitlabConfigProvider} from '../config/gitlab-config.model';
+import {GitlabConfigProvider} from '../../config/gitlab-config.model';
 
 describe('GitlabService', () => {
 

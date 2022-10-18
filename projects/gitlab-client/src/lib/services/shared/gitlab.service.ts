@@ -1,14 +1,14 @@
-import {Injectable} from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpResponse} from '@angular/common/http';
 import {catchError, concat, defer, EMPTY, from, mergeMap, Observable, Subject, tap, throwError} from 'rxjs';
-import {GitlabConfig, GitlabConfigProvider} from '../config/gitlab-config.model';
+import {GitlabConfig, GitlabConfigProvider} from '../../config/gitlab-config.model';
+import {Injectable, Optional} from '@angular/core';
 
 // header names
 const TOTAL_HEADER = 'X-Total';
 const TOTAL_PAGES_HEADER = 'X-Total-Pages'
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: null
 })
 export class GitlabService {
 
@@ -17,9 +17,16 @@ export class GitlabService {
   private readonly accessesSubject = new Subject<GitlabAccess>();
   public readonly accesses = this.accessesSubject.asObservable();
 
-  constructor(private readonly configProvider: GitlabConfigProvider,
-              private readonly http: HttpClient
+  constructor(
+    private readonly http: HttpClient,
+    @Optional() private readonly configProvider: GitlabConfigProvider
   ) {
+    if(this.configProvider == null) {
+      throw new Error(
+        "Please provide a GitlabConfigProvider for dependency injection. " +
+        "This error occurs when you import the GitlabClientModule directly instead of " +
+        "using GitlabClientModule.forRoot(...).");
+    }
   }
 
   private get config(): GitlabConfig {
